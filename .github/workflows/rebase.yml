@@ -20,6 +20,15 @@ jobs:
         with:
           ref: pontoon
           submodules: recursive
-      - uses: imba-tjd/rebase-upstream-action@0.5
+      - name: Rebase
+        uses: imba-tjd/rebase-upstream-action@0.5
         with:
           branch: main
+      - name: Push rebase
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: "pontoon"
+          commit-message: "update"
+          force-push: "true"
+          name: "slimevr-bot"
