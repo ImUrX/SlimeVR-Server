@@ -1,5 +1,6 @@
 # This workflow will rebase `pontoon` with `main` changes, it's for making the
 # Pontoon bot not try making commits to main
+#
 
 name: Rebaser
 on:
