@@ -5,8 +5,7 @@ on:
       - pontoon
 
 jobs:
-  rebase:
-
+  pr:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
