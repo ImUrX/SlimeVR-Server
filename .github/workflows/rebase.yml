@@ -1,0 +1,25 @@
+# This workflow will rebase `pontoon` with `main` changes, it's for making the
+# Pontoon bot not try making commits to main
+#
+
+name: Rebaser
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  rebase:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: pontoon
+          submodules: recursive
+      - uses: imba-tjd/rebase-upstream-action@0.5
+        with:
+          branch: main
