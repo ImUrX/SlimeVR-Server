@@ -168,7 +168,7 @@ tracker-settings-mounting_section = posizionamento di montaggio
 tracker-settings-mounting_section-description = Come è posizionato il tracker?
 tracker-settings-mounting_section-edit = Cambia posizionamento
 tracker-settings-drift_compensation_section = Consenti compensazione deriva
-tracker-settings-drift_compensation_section-description = Questo tracker dovrebbe compensare per il drift quando la compensazione dell drift è abilitata?
+tracker-settings-drift_compensation_section-description = Questo tracker dovrebbe compensare per il drift quando la compensazione del drift è abilitata?
 tracker-settings-drift_compensation_section-edit = Consenti compensazione del drift
 # The .<name> means it's an attribute and it's related to the top key.
 # In this case that is the settings for the assignment section.
@@ -238,7 +238,7 @@ settings-sidebar-gesture_control = Controllo dei gesti
 settings-sidebar-interface = Interfaccia
 settings-sidebar-osc_router = OSC router
 settings-sidebar-utils = Strumenti
-settings-sidebar-serial = Serial console
+settings-sidebar-serial = Console seriale
 
 ## SteamVR settings
 
@@ -274,18 +274,18 @@ settings-general-tracker_mechanics-filtering-type-smoothing-description = Attenu
 settings-general-tracker_mechanics-filtering-type-prediction = Predizione
 settings-general-tracker_mechanics-filtering-type-prediction-description = Riduce ritardo e rende movimenti più istantanei, ma può introdurre tremolio.
 settings-general-tracker_mechanics-filtering-amount = Quantità
-settings-general-tracker_mechanics-drift_compensation = Drift compensation
+settings-general-tracker_mechanics-drift_compensation = Compensazione del drift
 # This cares about multilines
 settings-general-tracker_mechanics-drift_compensation-description =
     Compensates IMU yaw drift by applying an inverse rotation.
     Change amount of compensation and up to how many resets are taken into account.
-settings-general-tracker_mechanics-drift_compensation-enabled-label = Drift compensation
-settings-general-tracker_mechanics-drift_compensation-amount-label = Compensazione totale
+settings-general-tracker_mechanics-drift_compensation-enabled-label = Compensazione del drift
+settings-general-tracker_mechanics-drift_compensation-amount-label = Grado di compensazione
 settings-general-tracker_mechanics-drift_compensation-max_resets-label = Utilizza fino a x ultimi ripristini
 
 ## FK/Tracking settings
 
-settings-general-fk_settings = Impostazioni FK
+settings-general-fk_settings = Impostazioni Tracking
 settings-general-fk_settings-leg_tweak = Impostazioni Gambe
 settings-general-fk_settings-leg_tweak-description = "Compenetrazione pavimento" può ridurre o anche eliminare completamente la compenetrazione con il pavimento, ma può causare problemi quando in ginocchio. "Correzione pattinaggio" corregge l'effetto che fa sembrare che pattini sul ghiaccio, ma può peggiorare la precisione di certi movimenti.
 # Floor clip:
@@ -319,8 +319,8 @@ settings-general-gesture_control-description = Abilita o disabilita il reset vel
 # $amount (Number) - Amount of taps (touches to the tracker's case)
 settings-general-gesture_control-taps =
     { $amount ->
-        [one] 1 tap
-       *[other] { $amount } taps
+        [one] 1 tocco
+       *[other] { $amount } tocchi
     }
 settings-general-gesture_control-quickResetEnabled = Abilita il tocco per il ripristino rapido
 settings-general-gesture_control-quickResetDelay = Ritardo reset rapido
@@ -330,7 +330,7 @@ settings-general-gesture_control-resetDelay = Ritardo reset
 settings-general-gesture_control-resetTaps = Tocchi per resettare
 settings-general-gesture_control-mountingResetEnabled = Abilita tocco per ripristinare il montaggio
 settings-general-gesture_control-mountingResetDelay = Ritardo ripristino montaggio
-settings-general-gesture_control-mountingResetTaps = Taps for mounting reset
+settings-general-gesture_control-mountingResetTaps = Tocchi per il ripristino rapido
 
 ## Interface settings
 
