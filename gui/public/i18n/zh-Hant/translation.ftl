@@ -16,7 +16,7 @@ websocket-connection_lost = 與伺服器的連線已中斷，正在嘗試重新�
 ## Tips
 
 tips-find_tracker = 若你不確定手上的追蹤器是哪一個，搖一搖它，對應的項目就會顯示出來
-tips-do_not_move_heels = 請確保你的腳踝在測量過程時不會移動
+tips-do_not_move_heels = 確保你的腳跟在測量過程時不會發生移動!
 
 ## Body parts
 
@@ -162,7 +162,7 @@ tracker-infos-url = 追蹤器地址
 tracker-settings-back = 返回追蹤器列表
 tracker-settings-title = 追蹤器設定
 tracker-settings-assignment_section = 指定部位
-tracker-settings-assignment_section-description = 這個追蹤器要指定到身體的哪個部位？
+tracker-settings-assignment_section-description = 這個追蹤器要分配到身上的哪個部位？
 tracker-settings-assignment_section-edit = 編輯指定部位
 tracker-settings-mounting_section = 配戴方式
 tracker-settings-mounting_section-description = 這個追蹤器要配戴在哪裡？
@@ -185,7 +185,7 @@ tracker-part_card-unassigned = 未分配
 
 body_assignment_menu = 將這個追蹤器配戴在哪裡？
 body_assignment_menu-description = 選擇要將此追蹤器分配到的身體部位。除了逐個設定外，你也可以一次設定所有追蹤器。
-body_assignment_menu-show_advanced_locations = 顯示進階的指定部位
+body_assignment_menu-show_advanced_locations = 顯示進階分配部位
 body_assignment_menu-manage_trackers = 管理所有追蹤器
 body_assignment_menu-unassign_tracker = 解除分配
 
@@ -231,7 +231,7 @@ mounting_selection_menu-close = 關閉
 ## Sidebar settings
 
 settings-sidebar-title = 設定
-settings-sidebar-general = 通用設定
+settings-sidebar-general = 一般設定
 settings-sidebar-tracker_mechanics = 追蹤機制
 settings-sidebar-fk_settings = 追蹤設定
 settings-sidebar-gesture_control = 手勢控制
@@ -287,7 +287,7 @@ settings-general-tracker_mechanics-drift_compensation-max_resets-label = 使用�
 
 settings-general-fk_settings = 追蹤設定
 settings-general-fk_settings-leg_tweak = 腿部調整
-settings-general-fk_settings-leg_tweak-description = 地板限制可以減輕甚至解決腳部穿入地板的情況，但是當跪在地上的時候可能會造成問題。腳滑修正可以矯正一些腳滑溜冰的問題, 但是可能會降低某些動作的準確度。
+settings-general-fk_settings-leg_tweak-description = 地板限制可以減輕甚至解決腳部穿入地板的情況，但是當跪在地上的時候可能會造成問題。腳滑修正可以矯正一些腳滑溜冰的問題，但是可能會降低某些動作的準確度。
 # Floor clip:
 # why the name - came from the idea of noclip in video games, but is the opposite where clipping to the floor is a desired feature
 # definition - Prevents the foot trackers from going lower than they where when a reset was performed
@@ -384,8 +384,8 @@ settings-osc-router-network-address-placeholder = VRChat IP 位址
 settings-osc-vrchat = VRChat OSC Trackers
 # This cares about multilines
 settings-osc-vrchat-description =
-    此處可更改 VRChat 專用的設定以取得頭戴顯示器的資料，
-          並傳送追蹤器資料以進行全身追蹤。（也適用於 Quest 單機版本）
+    此處可更改 VRChat 專用的設定以取得頭戴顯示器的資料，並傳送
+    追蹤器資料以進行全身追蹤。（也適用於 Quest 單機版本）
 settings-osc-vrchat-enable = 啟用
 settings-osc-vrchat-enable-description = 切換資料的傳送和接收。
 settings-osc-vrchat-enable-label = 啟用
@@ -399,7 +399,7 @@ settings-osc-vrchat-network-port_out =
     .placeholder = 輸出埠（預設 9000）
 settings-osc-vrchat-network-address = 網路地址
 settings-osc-vrchat-network-address-description = 設定用來發送資料到 VRChat 的地址（請檢察裝置的 Wi-Fi 設定）。
-settings-osc-vrchat-network-address-placeholder = VRChat IP 地址
+settings-osc-vrchat-network-address-placeholder = VRChat IP 位址
 settings-osc-vrchat-network-trackers = 追蹤器
 settings-osc-vrchat-network-trackers-description = 切換傳送指定追蹤器的資料。
 settings-osc-vrchat-network-trackers-chest = 胸部
@@ -493,7 +493,7 @@ onboarding-assign_trackers-description = 這些追蹤器要放在身上的哪個
 # $assigned (Number) - Trackers that have been assigned a body part
 # $trackers (Number) - Trackers connected to the server
 onboarding-assign_trackers-assigned = { $assigned }/{ $trackers } 個追蹤器已指定
-onboarding-assign_trackers-advanced = 顯示進階指定部位
+onboarding-assign_trackers-advanced = 顯示進階分配部位
 onboarding-assign_trackers-next = 所有的追蹤器都指定好了
 
 ## Tracker manual mounting setup
@@ -570,4 +570,4 @@ onboarding-automatic_proportions-done-description = 你的身體比例校正已�
 
 ## Home
 
-home-no_trackers = 未偵測到或未指定追蹤器
+home-no_trackers = 未偵測到或未分配追蹤器
