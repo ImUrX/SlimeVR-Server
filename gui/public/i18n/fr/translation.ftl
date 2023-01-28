@@ -63,7 +63,7 @@ skeleton_bone-SHOULDERS_DISTANCE = Distance des épaules
 skeleton_bone-SHOULDERS_WIDTH = Largeur des épaules
 skeleton_bone-UPPER_ARM = Longueur des bras supérieurs
 skeleton_bone-LOWER_ARM = Longueur des avant-bras
-skeleton_bone-CONTROLLER_Y = Distance Y des contrôleurs
+skeleton_bone-CONTROLLER_Y = Distance Y des manettes
 skeleton_bone-CONTROLLER_Z = Distance Z des contrôleurs
 skeleton_bone-ELBOW_OFFSET = Écart des coudes
 
