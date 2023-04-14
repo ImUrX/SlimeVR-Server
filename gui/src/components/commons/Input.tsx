@@ -4,7 +4,7 @@ import { Control, Controller, UseControllerProps } from 'react-hook-form';
 import { EyeIcon } from './icon/EyeIcon';
 
 interface InputProps {
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'untouched';
   label?: string;
   name: string;
 }
@@ -12,7 +12,7 @@ interface InputProps {
 export const InputInside = forwardRef<
   HTMLInputElement,
   {
-    variant?: 'primary' | 'secondary';
+    variant?: 'primary' | 'secondary' | 'untouched';
     label?: string;
     onChange: () => void;
   } & Partial<HTMLInputElement>
@@ -42,9 +42,18 @@ export const InputInside = forwardRef<
       secondary: classNames('bg-background-50 border-background-50'),
     };
 
+    if (variant === 'untouched')
+      return classNames(
+        'focus:ring-transparent focus:ring-offset-transparent focus:outline-transparent',
+        'rounded-md'
+      );
+
     return classNames(
       variantsMap[variant],
-      'w-full focus:ring-transparent focus:ring-offset-transparent focus:outline-transparent rounded-md bg-background-60 border-background-60 focus:border-accent-background-40 placeholder:text-background-30 text-standard relative'
+      'w-full focus:ring-transparent focus:ring-offset-transparent',
+      'focus:outline-transparent rounded-md bg-background-60 border-background-60',
+      'focus:border-accent-background-40 placeholder:text-background-30 text-standard',
+      'relative'
     );
   }, [variant]);
 
