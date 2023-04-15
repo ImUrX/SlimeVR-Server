@@ -932,7 +932,7 @@ export function GeneralSettings() {
               <Typography bold>
                 {l10n.getString('settings-general-interface-theme')}
               </Typography>
-              <div className="flex flex-row flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-2">
                 <ThemeSelector
                   control={control}
                   name="interface.theme"

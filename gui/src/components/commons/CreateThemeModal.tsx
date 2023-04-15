@@ -103,164 +103,173 @@ export function CreateThemeModal({
     >
       <div className="flex w-full h-full flex-col">
         <form>
-          <div className="flex w-full flex-row flex-grow gap-3">
-            <div className="flex w-full flex-col flex-grow gap-3">
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-10"
-                type="color"
-                label="Background Color"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-20"
-                type="color"
-                label="Background Color 20"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-30"
-                type="color"
-                label="Background Color 30"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-40"
-                type="color"
-                label="Background Color 40"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-50"
-                type="color"
-                label="Background Color 50"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-60"
-                type="color"
-                label="Background Color 60"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-70"
-                type="color"
-                label="Background Color 70"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-80"
-                type="color"
-                label="Background Color 80"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="background-90"
-                type="color"
-                label="Background Color 90"
-                variant="untouched"
-              />
+          <div className="flex w-full flex-row flex-grow gap-5">
+            <div className='flex flex-col'>
+              <p className="text-lg text-center pb-1">Background Color</p>
+              <div className="grid grid-cols-2 grid-rows-5 gap-2">
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-10"
+                  type="color"
+                  label="Background Color"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-20"
+                  type="color"
+                  label="Background Color 20"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-30"
+                  type="color"
+                  label="Background Color 30"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-40"
+                  type="color"
+                  label="Background Color 40"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-50"
+                  type="color"
+                  label="Background Color 50"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-60"
+                  type="color"
+                  label="Background Color 60"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-70"
+                  type="color"
+                  label="Background Color 70"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-80"
+                  type="color"
+                  label="Background Color 80"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="background-90"
+                  type="color"
+                  label="Background Color 90"
+                  variant="untouched"
+                />
+              </div>
             </div>
-            <div className="flex w-full flex-col flex-grow gap-3">
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="accent-background-10"
-                type="color"
-                label="Accent Background Color 10"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="accent-background-20"
-                type="color"
-                label="Accent Background Color 20"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="accent-background-30"
-                type="color"
-                label="Accent Background Color 30"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="accent-background-40"
-                type="color"
-                label="Accent Background Color 40"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="accent-background-50"
-                type="color"
-                label="Accent Background Color 50"
-                variant="untouched"
-              />
+            <div className='flex flex-col'>
+              <p className="text-lg text-center pb-1">Accent Color</p>
+              <div className="grid grid-rows-5 gap-2">
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="accent-background-10"
+                  type="color"
+                  label="Accent Background Color 10"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="accent-background-20"
+                  type="color"
+                  label="Accent Background Color 20"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="accent-background-30"
+                  type="color"
+                  label="Accent Background Color 30"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="accent-background-40"
+                  type="color"
+                  label="Accent Background Color 40"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="accent-background-50"
+                  type="color"
+                  label="Accent Background Color 50"
+                  variant="untouched"
+                />
+              </div>
             </div>
-            <div className="flex w-full flex-col flex-grow gap-3">
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="success"
-                type="color"
-                label="Success Color"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="warning"
-                type="color"
-                label="Warning Color"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="critical"
-                type="color"
-                label="Critical Color"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="special"
-                type="color"
-                label="Special Color"
-                variant="untouched"
-              />
-              <Input
-                control={control}
-                rules={{ required: true }}
-                name="default-color"
-                type="color"
-                label="Default Color"
-                variant="untouched"
-              />
+            <div className='flex flex-col'>
+              <p className="text-lg text-center pb-1">Other</p>
+              <div className="grid grid-rows-5 gap-2">
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="success"
+                  type="color"
+                  label="Success Color"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="warning"
+                  type="color"
+                  label="Warning Color"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="critical"
+                  type="color"
+                  label="Critical Color"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="special"
+                  type="color"
+                  label="Special Color"
+                  variant="untouched"
+                />
+                <Input
+                  control={control}
+                  rules={{ required: true }}
+                  name="default-color"
+                  type="color"
+                  label="Default Color"
+                  variant="untouched"
+                />
+              </div>
             </div>
           </div>
         </form>
