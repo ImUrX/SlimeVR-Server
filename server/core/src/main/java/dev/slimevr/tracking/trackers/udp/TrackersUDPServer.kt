@@ -137,6 +137,14 @@ class TrackersUDPServer(private val port: Int, name: String, private val tracker
 		bb.rewind()
 		parser.writeHandshakeResponse(bb, connection)
 		socket.send(DatagramPacket(rcvBuffer, bb.position(), connection.address))
+
+		// LED Sync every tracker each time we get a new device
+		bb.limit(bb.capacity())
+		bb.rewind()
+		parser.write(bb, null, UDPPacket23LedOffset())
+		broadcastAddresses.forEach {
+			socket.send(DatagramPacket(rcvBuffer, bb.position(), it))
+		}
 	}
 
 	private fun setUpSensor(connection: UDPDevice, trackerId: Int, sensorType: IMUType, sensorStatus: Int) {
@@ -404,7 +412,7 @@ class TrackersUDPServer(private val port: Int, name: String, private val tracker
 				connection.firmwareFeatures = packet.firmwareFeatures
 			}
 
-			is UDPPacket200ProtocolChange -> {}
+			is UDPPacket23LedOffset, is UDPPacket200ProtocolChange -> {}
 		}
 	}
 

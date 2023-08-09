@@ -320,7 +320,7 @@ data class UDPPacket21UserAction(var type: Int = 0) : UDPPacket(21) {
 	}
 }
 
-class UDPPacket22FeatureFlags(
+data class UDPPacket22FeatureFlags(
 	var firmwareFeatures: FirmwareFeatures = FirmwareFeatures(),
 ) :
 	UDPPacket(22) {
@@ -330,6 +330,12 @@ class UDPPacket22FeatureFlags(
 
 	override fun writeData(buf: ByteBuffer) {
 		buf.put(ServerFeatureFlags.packed)
+	}
+}
+
+data class UDPPacket23LedOffset(var ledOffset: Int = 0) : UDPPacket(23) {
+	override fun writeData(buf: ByteBuffer) {
+		buf.putInt(ledOffset)
 	}
 }
 

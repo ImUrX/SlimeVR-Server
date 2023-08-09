@@ -125,6 +125,8 @@ class UDPProtocolParser {
 		const val PACKET_TEMPERATURE = 20
 		const val PACKET_USER_ACTION = 21
 		const val PACKET_FEATURE_FLAGS = 22
+
+		// const val PACKET_LED_OFFSET = 23 // Not parsed by server
 		const val PACKET_BUNDLE = 100
 		const val PACKET_PROTOCOL_CHANGE = 200
 		private val HANDSHAKE_BUFFER = ByteArray(64)
