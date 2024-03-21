@@ -135,7 +135,8 @@ public enum SkeletonConfigOffsets {
 		"elbowOffset",
 		0.0f,
 		new BoneType[] { BoneType.LEFT_ELBOW_TRACKER, BoneType.RIGHT_ELBOW_TRACKER }
-	),;
+	),
+	;
 
 	public static final SkeletonConfigOffsets[] values = values();
 	private static final Map<Number, SkeletonConfigOffsets> byIdVal = new HashMap<>();

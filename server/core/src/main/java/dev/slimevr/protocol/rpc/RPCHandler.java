@@ -390,11 +390,14 @@ public class RPCHandler extends ProtocolHandler<RpcMessageHeader> {
 		FlatBufferBuilder fbb = new FlatBufferBuilder(32);
 
 		float hmdHeight = this.api.server.humanPoseManager.getHmdHeight();
+		Float configHeight = this.api.server.humanPoseManager.getConfigUserHeight();
 		int response = HeightResponse
 			.createHeightResponse(
 				fbb,
 				hmdHeight,
-				hmdHeight / BodyProportionError.eyeHeightToHeightRatio
+				configHeight != null
+					? configHeight
+					: hmdHeight / BodyProportionError.eyeHeightToHeightRatio
 			);
 		fbb.finish(createRPCMessage(fbb, RpcMessage.HeightResponse, response));
 		conn.send(fbb.dataBuffer());

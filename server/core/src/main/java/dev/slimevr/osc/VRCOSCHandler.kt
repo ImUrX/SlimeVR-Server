@@ -210,7 +210,7 @@ class VRCOSCHandler(
 						0f,
 						event
 							.message
-							.arguments[0] as Float * humanPoseManager.userHeightFromConfig,
+							.arguments[0] as Float * humanPoseManager.userHeight,
 						0f,
 					)
 					vrcHmd!!.dataTick()

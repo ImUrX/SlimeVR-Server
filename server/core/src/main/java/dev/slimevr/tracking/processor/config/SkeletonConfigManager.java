@@ -45,7 +45,10 @@ public class SkeletonConfigManager {
 
 	protected final boolean autoUpdateOffsets;
 	protected HumanPoseManager humanPoseManager;
-	protected float userHeight = calculateUserHeight();
+	protected float offsetHeight = calculateUserHeight();
+	private final SkeletonConfig config = VRServer.Companion.getInstance().configManager
+		.getVrConfig()
+		.getSkeleton();
 	static final float FLOOR_OFFSET = 0.05f;
 
 	public SkeletonConfigManager(boolean autoUpdateOffsets) {
@@ -117,7 +120,7 @@ public class SkeletonConfigManager {
 		}
 
 		// Re-calculate user height
-		userHeight = calculateUserHeight();
+		offsetHeight = calculateUserHeight();
 	}
 
 	public void setOffset(SkeletonConfigOffsets config, Float newValue) {
@@ -141,8 +144,16 @@ public class SkeletonConfigManager {
 		return height;
 	}
 
-	public float getUserHeightFromOffsets() {
-		return userHeight;
+	public void setUserHeight(Float value) {
+		config.height = value;
+	}
+
+	public Float getConfigUserHeight() {
+		return config.height;
+	}
+
+	public float getUserHeight() {
+		return config.height == null ? offsetHeight : config.height;
 	}
 
 	public void setToggle(SkeletonConfigToggles config, Boolean newValue) {
@@ -389,9 +400,7 @@ public class SkeletonConfigManager {
 		// Remove from config to use default if they change in the future.
 		Arrays.fill(changedToggles, false);
 		for (SkeletonConfigToggles value : SkeletonConfigToggles.values) {
-			VRServer.Companion.getInstance().configManager
-				.getVrConfig()
-				.getSkeleton()
+			config
 				.getToggles()
 				.remove(value.configKey);
 			// Set default in skeleton
@@ -435,8 +444,10 @@ public class SkeletonConfigManager {
 
 		switch (config) {
 			case UPPER_CHEST, CHEST, WAIST, HIP, UPPER_LEG, LOWER_LEG -> {
-				float height = humanPoseManager.getHmdHeight()
-					/ BodyProportionError.eyeHeightToHeightRatio;
+				float height = getConfigUserHeight() != null
+					? getConfigUserHeight()
+					: humanPoseManager.getHmdHeight()
+						/ BodyProportionError.eyeHeightToHeightRatio;
 				if (height > 0.5f) { // Reset only if floor level seems right,
 					ProportionLimiter proportionLimiter = BodyProportionError
 						.getProportionLimitMap()
@@ -500,26 +511,22 @@ public class SkeletonConfigManager {
 	}
 
 	public void save() {
-		dev.slimevr.config.SkeletonConfig skeletonConfig = VRServer.Companion
-			.getInstance().configManager
-				.getVrConfig()
-				.getSkeleton();
 
 		// Write all possible values to keep consistent even if defaults changed
 		for (SkeletonConfigOffsets value : SkeletonConfigOffsets.values) {
-			skeletonConfig.getOffsets().put(value.configKey, getOffset(value));
+			config.getOffsets().put(value.configKey, getOffset(value));
 		}
 
 		// Only write changed values to keep using defaults if not changed
 		for (SkeletonConfigToggles value : SkeletonConfigToggles.values) {
 			if (changedToggles[value.id - 1])
-				skeletonConfig.getToggles().put(value.configKey, getToggle(value));
+				config.getToggles().put(value.configKey, getToggle(value));
 		}
 
 		// Only write changed values to keep using defaults if not changed
 		for (SkeletonConfigValues value : SkeletonConfigValues.values) {
 			if (changedValues[value.id - 1])
-				skeletonConfig.getValues().put(value.configKey, getValue(value));
+				config.getValues().put(value.configKey, getValue(value));
 		}
 	}
 }

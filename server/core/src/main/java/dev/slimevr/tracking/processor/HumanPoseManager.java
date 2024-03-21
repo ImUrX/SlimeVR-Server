@@ -807,11 +807,25 @@ public class HumanPoseManager {
 	}
 
 	@ThreadSafe
-	public float getUserHeightFromConfig() {
+	public float getUserHeight() {
 		if (isSkeletonPresent()) {
-			return skeletonConfigManager.getUserHeightFromOffsets();
+			return skeletonConfigManager.getUserHeight();
 		}
 		return 0f;
+	}
+
+	@ThreadSafe
+	public Float getConfigUserHeight() {
+		if (isSkeletonPresent()) {
+			return skeletonConfigManager.getConfigUserHeight();
+		}
+		return null;
+	}
+
+	public void setConfigUserHeight(Float value) {
+		if (isSkeletonPresent()) {
+			skeletonConfigManager.setUserHeight(value);
+		}
 	}
 	// #endregion
 

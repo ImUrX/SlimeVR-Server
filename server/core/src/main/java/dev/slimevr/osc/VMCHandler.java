@@ -397,7 +397,7 @@ public class VMCHandler implements OSCHandler {
 							.getTailPosition()
 							.times(
 								vrmHeight
-									/ (humanPoseManager.getUserHeightFromConfig()
+									/ (humanPoseManager.getUserHeight()
 										* BodyProportionError.eyeHeightToHeightRatio)
 							);
 

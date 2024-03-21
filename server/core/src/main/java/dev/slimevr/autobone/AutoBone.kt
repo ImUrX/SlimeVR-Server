@@ -158,7 +158,7 @@ class AutoBone(server: VRServer) {
 		if (config.useSkeletonHeight && humanPoseManager != null) {
 			// If there is a skeleton available, calculate the target height
 			// from its configs
-			targetHeight = humanPoseManager.userHeightFromConfig
+			targetHeight = humanPoseManager.userHeight
 			LogManager
 				.warning(
 					"[AutoBone] Target height loaded from skeleton (Make sure you reset before running!): $targetHeight",
@@ -587,11 +587,11 @@ class AutoBone(server: VRServer) {
 			// Only adjusted height offsets
 			val adjHeight = sumAdjustedHeightOffsets(humanPoseManager)
 			// Remove the constant from the target, leaving only the target for adjusted height offsets
-			val adjTarget = targetHeight - (humanPoseManager.userHeightFromConfig - adjHeight)
+			val adjTarget = targetHeight - (humanPoseManager.userHeight - adjHeight)
 			// Return only the scale for adjusted offsets
 			adjTarget / adjHeight
 		} else {
-			targetHeight / humanPoseManager.userHeightFromConfig
+			targetHeight / humanPoseManager.userHeight
 		}
 
 		val offsets = if (onlyAdjustedHeight) SkeletonConfigManager.HEIGHT_OFFSETS else SkeletonConfigOffsets.values

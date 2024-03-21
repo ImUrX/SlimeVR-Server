@@ -24,6 +24,8 @@ public class SkeletonConfig {
 	@JsonSerialize(keyUsing = StdKeySerializers.StringKeySerializer.class)
 	public Map<String, Float> offsets = new HashMap<>();
 
+	public Float height = null;
+
 	public Map<String, Boolean> getToggles() {
 		return toggles;
 	}
