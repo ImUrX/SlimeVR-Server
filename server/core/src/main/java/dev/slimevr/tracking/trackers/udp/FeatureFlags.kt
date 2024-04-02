@@ -1,6 +1,7 @@
 package dev.slimevr.tracking.trackers.udp
 
 import java.nio.ByteBuffer
+import kotlin.math.*
 
 /**
  * Bit packed flags, enum values start with 0 and indicate which bit it is.
@@ -10,6 +11,9 @@ import java.nio.ByteBuffer
 class FirmwareFeatures {
 	enum class FirmwareFeatureFlags {
 		// EXAMPLE_FEATURE,
+		REMOTE_COMMAND,
+		B64_WIFI_SCANNING,
+		SENSOR_CONFIG,
 
 		// Add new flags here
 
@@ -32,7 +36,7 @@ class FirmwareFeatures {
 		fun from(received: ByteBuffer, length: Int): FirmwareFeatures {
 			val res = FirmwareFeatures()
 			res.available = true
-			received.get(res.flags, 0, Math.min(res.flags.size, length))
+			received.get(res.flags, 0, min(res.flags.size, length))
 			return res
 		}
 	}

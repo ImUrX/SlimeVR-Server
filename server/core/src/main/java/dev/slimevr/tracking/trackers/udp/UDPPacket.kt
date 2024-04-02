@@ -260,7 +260,7 @@ data class UDPPacket17RotationData(
 	var calibrationInfo: Int = 0,
 ) : UDPPacket(17),
 	SensorSpecificPacket {
-	override var sensorId: Int = 0
+	override var sensorId = 0
 	override fun readData(buf: ByteBuffer) {
 		sensorId = buf.get().toInt() and 0xFF
 		dataType = buf.get().toInt() and 0xFF
@@ -317,7 +317,7 @@ data class UDPPacket21UserAction(var type: Int = 0) : UDPPacket(21) {
 	}
 }
 
-class UDPPacket22FeatureFlags(
+data class UDPPacket22FeatureFlags(
 	var firmwareFeatures: FirmwareFeatures = FirmwareFeatures(),
 ) : UDPPacket(22) {
 	override fun readData(buf: ByteBuffer) {
@@ -326,6 +326,32 @@ class UDPPacket22FeatureFlags(
 
 	override fun writeData(buf: ByteBuffer) {
 		buf.put(ServerFeatureFlags.packed)
+	}
+}
+
+data class UDPPacket23AckConfigChange(
+	var flagId: UShort = 0u,
+) : UDPPacket(23),
+	SensorSpecificPacket {
+	override var sensorId = 0
+
+	override fun readData(buf: ByteBuffer) {
+		sensorId = buf.get().toInt() and 0xFF
+		flagId = buf.getShort().toUShort()
+	}
+}
+
+data class UDPPacket24SetConfigFlag(
+	var flag: SensorFlag = SensorFlag.Unknown,
+) : UDPPacket(24),
+	SensorSpecificPacket {
+	// 255 is global
+	override var sensorId = 255
+
+	override fun writeData(buf: ByteBuffer) {
+		buf.put(sensorId.toByte())
+		buf.putShort(flag.id.toShort())
+		buf.put(if (flag.state) 1 else 0)
 	}
 }
 
