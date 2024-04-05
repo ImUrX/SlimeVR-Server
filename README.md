@@ -1,4 +1,4 @@
-# SlimeVR Server
+# SlimeVR Server test
 Server app for SlimeVR ecosystem
 
 Server orchestrates communication between multiple sensors and integrations, like SteamVR.
