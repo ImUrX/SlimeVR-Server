@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/SlimeVR/SlimeVR-Server"
 
 edition = "2021"
-rust-version = "1.65"
+rust-version = "1.75"
 default-run = "slimevr"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -22,7 +22,6 @@ custom-protocol = ["tauri/custom-protocol"]
 
 [build-dependencies]
 tauri-build = { version = "=2.0.0-beta.11", features = [] }
-cfg_aliases = "0.2"
 shadow-rs = "0.27"
 
 [dependencies]
@@ -32,10 +31,10 @@ tauri = { version = "=2.0.0-beta.14", features = ["devtools", "tray-icon", "imag
 tauri-runtime = "=2.0.0-beta.11"
 tauri-plugin-dialog = "=2.0.0-beta.4"
 tauri-plugin-fs = "=2.0.0-beta.4"
+tauri-plugin-log = "2.0.0-beta"
 tauri-plugin-os = "=2.0.0-beta.3"
 tauri-plugin-shell = "=2.0.0-beta.3"
 tauri-plugin-store = "=2.0.0-beta.4"
-flexi_logger = "0.28"
 log-panics = { version = "2", features = ["with-backtrace"] }
 log = "0.4"
 clap = { version = "4.0.29", features = ["derive"] }

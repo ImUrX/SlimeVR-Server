@@ -140,7 +140,11 @@ function verifyLocale(locale: string | null): string | null {
     new Intl.Locale(locale);
     return locale;
   } catch (e) {
-    error(e);
+    if (typeof e === 'string') {
+      error(e);
+    } else if (e instanceof Error) {
+      error(e.toString());
+    }
     return null;
   }
 }

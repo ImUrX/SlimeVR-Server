@@ -50,7 +50,8 @@ import semver from 'semver';
 import { useBreakpoint, useIsTauri } from './hooks/breakpoint';
 import { VRModePage } from './components/vr-mode/VRModePage';
 import { InterfaceSettings } from './components/settings/pages/InterfaceSettings';
-import { error, log } from './utils/logging';
+import { attachConsole } from '@tauri-apps/plugin-log';
+import { error, info } from './utils/logging';
 import { AppLayout } from './AppLayout';
 import { Preload } from './components/Preload';
 import { UnknownDeviceModal } from './components/UnknownDeviceModal';
@@ -161,6 +162,16 @@ export default function App() {
   const [updateFound, setUpdateFound] = useState('');
   const isTauri = useIsTauri();
 
+  if (isTauri) {
+    useEffect(() => {
+      const detach = attachConsole();
+
+      return () => {
+        detach.then((fn) => fn());
+      };
+    }, []);
+  }
+
   useEffect(() => {
     const onKeydown: (arg0: KeyboardEvent) => void = function (event) {
       // prevent search bar keybind
@@ -238,11 +249,11 @@ export default function App() {
               )
             );
           } else if (eventType === 'error') {
-            error('Error: %s', s);
+            error(`Error: ${s}`);
           } else if (eventType === 'terminated') {
-            error('Server Process Terminated: %s', s);
+            error(`Server Process Terminated: ${s}`);
           } else if (eventType === 'other') {
-            log('Other process event: %s', s);
+            info(`Other process event: ${s}`);
           }
         }
       );

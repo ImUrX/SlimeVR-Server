@@ -12,6 +12,8 @@ use clap::Parser;
 use color_eyre::Result;
 use state::WindowState;
 use tauri::{Manager, RunEvent, WindowEvent};
+use tauri_plugin_log::Target;
+use tauri_plugin_log::TargetKind;
 use tauri_plugin_shell::process::CommandChild;
 
 use crate::util::{
@@ -19,6 +21,7 @@ use crate::util::{
 };
 
 mod state;
+#[cfg(desktop)]
 mod tray;
 mod util;
 
@@ -38,21 +41,6 @@ fn update_window_state(
 	Ok(())
 }
 
-#[tauri::command]
-fn logging(msg: String) {
-	log::info!(target: "webview", "{}", msg)
-}
-
-#[tauri::command]
-fn erroring(msg: String) {
-	log::error!(target: "webview", "{}", msg)
-}
-
-#[tauri::command]
-fn warning(msg: String) {
-	log::warn!(target: "webview", "{}", msg)
-}
-
 fn main() -> Result<()> {
 	log_panics::init();
 	let hook = panic::take_hook();
@@ -64,41 +52,6 @@ fn main() -> Result<()> {
 
 	let cli = Cli::parse();
 	let tauri_context = tauri::generate_context!();
-
-	// Set up loggers and global handlers
-	let _logger = {
-		use flexi_logger::{
-			Age, Cleanup, Criterion, Duplicate, FileSpec, Logger, Naming, WriteMode,
-		};
-		use tauri::Error;
-
-		// Based on https://docs.rs/tauri/2.0.0-alpha.10/src/tauri/path/desktop.rs.html#238-256
-		#[cfg(target_os = "macos")]
-		let path = dirs_next::home_dir().ok_or(Error::UnknownPath).map(|dir| {
-			dir.join("Library/Logs")
-				.join(&tauri_context.config().identifier)
-		});
-
-		#[cfg(not(target_os = "macos"))]
-		let path = dirs_next::data_dir()
-			.ok_or(Error::UnknownPath)
-			.map(|dir| dir.join(&tauri_context.config().identifier).join("logs"));
-
-		Logger::try_with_env_or_str("info")?
-			.log_to_file(
-				FileSpec::default().directory(path.expect("We need a log dir")),
-			)
-			.format_for_files(util::logger_format)
-			.format_for_stderr(util::logger_format)
-			.rotate(
-				Criterion::Age(Age::Day),
-				Naming::Timestamps,
-				Cleanup::KeepLogFiles(2),
-			)
-			.duplicate_to_stderr(Duplicate::All)
-			.write_mode(WriteMode::BufferAndFlush)
-			.start()?
-	};
 
 	// Ensure child processes die when spawned on windows
 	// and then check for WebView2's existence
@@ -171,13 +124,23 @@ fn main() -> Result<()> {
 		.plugin(tauri_plugin_os::init())
 		.plugin(tauri_plugin_shell::init())
 		.plugin(tauri_plugin_store::Builder::default().build())
+		.plugin(
+			tauri_plugin_log::Builder::new()
+				.targets([
+					Target::new(TargetKind::Stdout),
+					Target::new(TargetKind::LogDir {
+						file_name: Some("tauri".into()),
+					}),
+					Target::new(TargetKind::Webview),
+				])
+				.build(),
+		)
 		.invoke_handler(tauri::generate_handler![
 			update_window_state,
-			logging,
-			erroring,
-			warning,
+			#[cfg(desktop)]
 			tray::update_translations,
-			tray::update_tray_text
+			#[cfg(desktop)]
+			tray::update_tray_text,
 		])
 		.setup(move |app| {
 			let window_state =

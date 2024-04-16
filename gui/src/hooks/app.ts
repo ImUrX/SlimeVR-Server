@@ -111,7 +111,11 @@ export function useProvideAppContext(): AppContext {
         }
       }
     } catch (e) {
-      error(e);
+      if (typeof e === 'string') {
+        error(e);
+      } else if (e instanceof Error) {
+        error(e.toString());
+      }
     }
   });
 

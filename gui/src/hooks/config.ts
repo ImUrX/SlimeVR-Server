@@ -152,7 +152,11 @@ export function useConfigProvider(): ConfigContext {
         setLoading(false);
         return loadedConfig;
       } catch (e) {
-        error(e);
+        if (typeof e === 'string') {
+          error(e);
+        } else if (e instanceof Error) {
+          error(e.toString());
+        }
         setConfig(defaultConfig);
         setLoading(false);
         return null;
