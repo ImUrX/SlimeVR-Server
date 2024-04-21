@@ -142,6 +142,7 @@ pub fn webview2_exists() -> bool {
 	exists
 }
 
+#[cfg(desktop)]
 pub fn valid_java_paths() -> Vec<(OsString, i32)> {
 	let mut file = Builder::new()
 		.suffix(".jar")

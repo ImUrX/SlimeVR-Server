@@ -46,11 +46,20 @@
         _module.args.pkgs = import self.inputs.nixpkgs {
           inherit system;
           overlays = [nixgl.overlay];
+          config = {
+            android_sdk.accept_license = true;
+            allowUnfree = true;
+          };
         };
 
         devenv.shells.default = let
           fenixpkgs = inputs'.fenix.packages;
           rust_toolchain = lib.importTOML ./rust-toolchain.toml;
+          androidCompose = pkgs.androidenv.composeAndroidPackages {
+            platformVersions = ["28"];
+            abiVersions = ["x86" "x86_64"];
+            includeNDK = true;
+          };
         in {
           name = "slimevr";
 
@@ -96,6 +105,8 @@
               expat
               libayatana-appindicator
               libusb1
+              androidCompose.androidsdk
+              # glibc
             ])
             ++ lib.optionals pkgs.stdenv.isDarwin [
               pkgs.darwin.apple_sdk.frameworks.Security
@@ -124,6 +135,8 @@
 
           env = {
             GIO_EXTRA_MODULES = "${pkgs.glib-networking}/lib/gio/modules:${pkgs.dconf.lib}/lib/gio/modules";
+            ANDROID_HOME = "${androidCompose.androidsdk}/libexec/android-sdk";
+            NDK_HOME = "${androidCompose.ndk-bundle}/libexec/android-sdk/ndk-bundle";
           };
 
           enterShell = with pkgs; ''

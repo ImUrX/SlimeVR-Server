@@ -3812,7 +3812,6 @@ dependencies = [
  "clap-verbosity-flag",
  "color-eyre",
  "const_format",
- "dirs-next",
  "glob",
  "log",
  "log-panics",
